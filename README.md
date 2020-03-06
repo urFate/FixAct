@@ -1,7 +1,7 @@
 # **Welcome to FixAct github page!**
 **FixAct this is simple  KMS based Windows and Office activator in console view.**
 
-# FixAct Plans
+## FixAct Plans
 
  1.  Windows activation ✔
  2.  Office activation  ❌
