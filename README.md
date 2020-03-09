@@ -2,16 +2,15 @@
 **FixAct this is simple  KMS based Windows and Office activator in console view.**
 
 ## FixAct Plans
-
- 1.  Windows activation ✔
- 2.  Office activation  ❌
- 3.  Create reactivation task function ❌
- 4.  Multi language ✔
- 5.  Graphical user interface ❌
- 6.  Automatic Admin(UAC) Request ❌
+✔ - Released  | ❌- Not released  |  🔜 - Coming in next update
+ -  Windows activation ✔
+ -  Office activation  🔜
+ -  Create reactivation task function ❌
+ -  Multi language ✔
+ -  Graphical user interface ❌
+ -  Automatic Administrator Request (UAC) 🔜
  
  
 ## Contacts
-
-**Discord - Кофейник#4812** 📨
-**Telegram Channel - https://t.me/rukeys** 📰
+ - **Discord - Кофейник#4812** 📨
+ -  **Telegram Channel - https://t.me/rukeys** 📰
