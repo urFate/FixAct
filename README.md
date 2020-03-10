@@ -4,11 +4,11 @@
 ## FixAct Plans
 ✔ - Released  | ❌- Not released  |  🔜 - Coming in next update
  -  Windows activation ✔
- -  Office activation  🔜
+ -  Office activation  ✔
  -  Create reactivation task function ❌
  -  Multi language ✔
  -  Graphical user interface ❌
- -  Automatic Administrator Request (UAC) 🔜
+ -  Automatic Administrator Request (UAC) ✔
  
  
 ## Contacts
