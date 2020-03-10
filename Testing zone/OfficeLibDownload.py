@@ -5,7 +5,7 @@ import wget
 About this file:
 ==============================
 This script loads external libraries for Office 2010 and Office 2013. 
-They are needed for activation through the GMS server, 
+They are needed for activation through the KMS server, 
 because Office 2010 and 2013 do not have these libraries by default.
 ==============================
 '''
