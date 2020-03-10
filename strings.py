@@ -17,6 +17,9 @@ class langEN:
     githubPage = "FixAct github page - github.com/Arny4/FixAct \n "
     KMSinfo = "KMS server and keys provided by the site msguides.com \n "
     actStarted = "[Information] The activation process has begun, please wait ..."
+    officeVerSelect = "FixAct detected Office on your PC, but could not determine its version. Please, choose: \n"
+    outdatedOffice = "[Error] FixAct could not detect Office on your PC!"
+    officeLibDownload = "\nDownloading external libraries for activation ... \n"
 
 class langRU:
     welcome = "Добро пожаловать! Выберите нужную функцию чтобы продолжить.\n"
@@ -35,6 +38,9 @@ class langRU:
     githubPage = "Страница FixAct на github - github.com/Arny4/FixAct \n "
     KMSinfo = "KMS сервер и ключи предоставлены сайтом msguides.com \n "
     actStarted = "[Информация] Процесс активации начат, пожалуйста подождите..."
+    officeVerSelect = "FixAct обнаружил Office на вашем ПК, но не смог определить его версию. Пожалуйста выберите: \n"
+    outdatedOffice = "[Ошибка] FixAct не смог обнаружить Office на вашем ПК"
+    officeLibDownload = "\nЗагрузка внешних библеотек для активаци... \n"
 
 
 #KMS server
@@ -75,13 +81,13 @@ class Windows8:
     EnterpriseN = "JMNMF-RHW7P-DMY6X-RF3DR-X2BQT"
 
 class Office2019:
-    ProPlus = "NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP"
+    key = "NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP"
 
 class Office2016:
     key = "XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99"
 
 class Office2013:
-    key = "VYBBJ-TRJPB-QFQRF-QFT4D-H3GVB"
+    key = "YC7DK-G2NP3-2QQC3-J6H88-GVGXT"
 
 class Office2010:
-    key= "YC7DK-G2NP3-2QQC3-J6H88-GVGXT"
+    key = "VYBBJ-TRJPB-QFQRF-QFT4D-H3GVB"

@@ -3,8 +3,11 @@ import os
 import colorama
 from colorama import Back
 import activ as act
-from strings import Windows10, Windows8, Windows81, KMSdata
+from strings import Windows10, Windows8, Windows81, KMSdata, Office2010, Office2013, Office2016, Office2019
 import locale
+import wget
+import time
+import zipfile
 colorama.init()
 
 #Auto translate
@@ -17,7 +20,7 @@ else:
 
 
 #Welcome message
-print(":===================FixAct 1.0===================:")
+print(":===================FixAct 1.1===================:")
 print(lang.welcome)
 print(lang.mainSelect)
 select = input(lang.InputSelect)
@@ -29,84 +32,73 @@ sysEdition = platform.win32_edition()
 sysName = sysNum + sysEdition
 #===============================
 
-#Activated Product Selection
-def softSelect():
-    os.system("cls")
-    print(lang.softChoose)
-    print("1) Windows\n2) Office\n ")
-    softSelected = input(lang.softSelect)
-    if softSelected == "1":
-        WinActConfirm()
-    if softSelected == "2":
-        print("\nOffice activation do not work now :c")
+def StartOfficeAct():
+    srv = KMSdata.kmsServer
+    #Getting path to ProgramFiles folder
+    progFilesFolder = os.environ["PROGRAMFILES"]
+
+    #Office paths
+    office10 = progFilesFolder+r"\Microsoft Office\Office14\ospp.vbs"
+    office13 = progFilesFolder+r"\Microsoft Office\Office15\ospp.vbs"
+    office = progFilesFolder+r"\Microsoft Office\Office16\ospp.vbs"
+
+    if os.path.exists(office10):
+        try:
+            os.mkdir("C:/libraries")
+            os.mkdir("C:/libraries/office10")
+            lib13 = "https://github.com/Arny4/FixAct/blob/master/OldOfficeVL_libs/office2010.zip?raw=true"
+            out = "C:/libraries/"
+            wget.download(lib13, out=out)
+            print(lang.officeLibDownload)
+            libs = zipfile.ZipFile('C:/libraries/office2010.zip')
+            libs.extractall('C:/libraries/office10/')
+            os.chdir("C:/libraries/office13/library/")
+            os.system(r"for /f %x in ('dir /b *') do cscript %folder%\ospp.vbs /inslic:%x")
+            time.sleep(1.500)
+            act.office(srv, Office2010.key, "10")
+        except OSError:
+            lib13 = "https://github.com/Arny4/FixAct/blob/master/OldOfficeVL_libs/office2010.zip?raw=true"
+            out = "C:/libraries/"
+            libs = zipfile.ZipFile('C:/libraries/office2010.zip')
+            libs.extractall('C:/libraries/office10/')
+            wget.download(lib13, out=out)
+            print(lang.officeLibDownload)
+            time.sleep(1.500)
+            act.office(srv, Office2010.key, "10")
+    elif os.path.exists(office13):
+        try:
+            os.mkdir("C:/libraries")
+            os.mkdir("C:/libraries/office13")
+            lib13 = "https://github.com/Arny4/FixAct/blob/master/OldOfficeVL_libs/office2013.zip?raw=true"
+            out = "C:/libraries/"
+            wget.download(lib13, out=out)
+            print(lang.officeLibDownload)
+            libs = zipfile.ZipFile('C:/libraries/office2013.zip')
+            libs.extractall('C:/libraries/office13/')
+            os.chdir("C:/libraries/office13/library/")
+            os.system(r"for /f %x in ('dir /b *') do cscript %folder%\ospp.vbs /inslic:%x")
+            time.sleep(1.500)
+            act.office(srv, Office2013.key, "13")
+        except OSError:
+            lib13 = "https://github.com/Arny4/FixAct/blob/master/OldOfficeVL_libs/office2013.zip?raw=true"
+            out = "C:/libraries/"
+            libs = zipfile.ZipFile('C:/libraries/office2013.zip')
+            libs.extractall('C:/libraries/office13/')
+            wget.download(lib13, out=out)
+            print(lang.officeLibDownload)
+            time.sleep(1.500)
+            act.office(srv, Office2013.key, "13")
+
+    elif os.path.exists(office):
+        print(lang.officeVerSelect)
+        print("1) Office 2016(365)\n2) Office 2019")
+        select = input(lang.InputSelect)
+        if select == "1":
+            act.office(srv, Office2016.key, "16")
+        elif select == "2":
+            act.office(srv, Office2019.key, "19")
     else:
-        print(lang.invalidSoft)
-
-def about():
-    os.system("cls")
-    print(lang.aboutMsg1)
-    print(lang.aboutAuthor)
-    print(lang.githubPage)
-    print(lang.KMSinfo)
-
-if select == "1":
-    softSelect()
-if select == "2":
-    about()
-
-#Windows Activation Confirmation
-def WinActConfirm():
-    os.system("cls")
-    print(":=================Windows=================:\n ")
-    print(lang.WinverAndNum + "{0} {1}\n ".format(sysNum,sysEdition))
-    confirm = input(lang.startActInput)
-    if confirm == "Д":
-        StartWinAct()
-    elif confirm == "д":
-        StartWinAct()
-    elif confirm == "Н":
-        softSelect()
-    elif confirm == "н":
-        softSelect()
-    elif confirm == "Y":
-        StartWinAct()
-    elif confirm == "y":
-        StartWinAct()
-    elif confirm == "N":
-        softSelect()
-    elif confirm == "n":
-        softSelect()
-    else:
-        softSelect()
-
-
-
-def OfficeVerSelect():
-    pass
-
-def OfficeActConfirm():
-    os.system("cls")
-    print(":=================Office=================:")
-    print(lang.OfficeVerAndEdition)
-    officeActConfirm = input(lang.OfficeStartActInput)
-    if officeActConfirm == "Y":
-        OfficeVerSelect()
-    elif officeActConfirm == "N":
-        softSelect()
-    elif officeActConfirm == "y":
-        OfficeVerSelect()
-    elif officeActConfirm == "n":
-        softSelect()
-    elif officeActConfirm == "Д":
-        OfficeVerSelect()
-    elif officeActConfirm == "Н":
-        softSelect()
-    elif officeActConfirm == "д":
-        OfficeVerSelect()
-    elif officeActConfirm == "н":
-        softSelect()
-    else:
-        softSelect()
+        print(Back.RED+lang.outdatedOffice+Back.BLACK)
 
 def StartWinAct():
     srv = KMSdata.kmsServer
@@ -174,6 +166,102 @@ def StartWinAct():
         os.system("cls")
         print(Back.RED+lang.OSnotSupport+Back.BLACK)
     
+
+#Windows Activation Confirmation
+def WinActConfirm():
+    os.system("cls")
+    print(":=================Windows=================:\n ")
+    print(lang.WinverAndNum + "{0} {1}\n ".format(sysNum,sysEdition))
+    confirm = input(lang.startActInput)
+    if confirm == "Д":
+        StartWinAct()
+    elif confirm == "д":
+        StartWinAct()
+    elif confirm == "Н":
+        softSelect()
+    elif confirm == "н":
+        softSelect()
+    elif confirm == "Y":
+        StartWinAct()
+    elif confirm == "y":
+        StartWinAct()
+    elif confirm == "N":
+        softSelect()
+    elif confirm == "n":
+        softSelect()
+    else:
+        softSelect()
+
+
+
+def OfficeActConfirm():
+   #Getting path to ProgramFiles folder
+    progFilesFolder = os.environ["PROGRAMFILES"]
+
+    #Office versions variables
+    office10 = progFilesFolder+r"\Microsoft Office\Office14\ospp.vbs"
+    office13 = progFilesFolder+r"\Microsoft Office\Office15\ospp.vbs"
+    office = progFilesFolder+r"\Microsoft Office\Office16\ospp.vbs"
+    os.system("cls")
+    print(":=================Office=================:")
+    if os.path.exists(office10):
+        print(lang.OfficeVerAndEdition+"Office 2010")
+    elif os.path.exists(office13):
+        print(lang.OfficeVerAndEdition+"Office 2013")
+    elif os.path.exists(office):
+        print(lang.OfficeVerAndEdition+"Office 2016 or higher")
+    else:
+        print("You dont have Office on your PC :c")
+        time.sleep(3)
+        softSelect()
+    officeActConfirm = input(lang.OfficeStartActInput)
+    if officeActConfirm == "Y":
+        StartOfficeAct()
+    elif officeActConfirm == "N":
+        softSelect()
+    elif officeActConfirm == "y":
+        StartOfficeAct()
+    elif officeActConfirm == "n":
+        softSelect()
+    elif officeActConfirm == "Д":
+        StartOfficeAct()
+    elif officeActConfirm == "Н":
+        softSelect()
+    elif officeActConfirm == "д":
+        StartOfficeAct()
+    elif officeActConfirm == "н":
+        softSelect()
+    else:
+        softSelect()
+
+#Activated Product Selection
+def softSelect():
+    os.system("cls")
+    print(lang.softChoose)
+    print("1) Windows\n2) Office\n ")
+    softSelected = input(lang.softSelect)
+    if softSelected == "1":
+        WinActConfirm()
+    if softSelected == "2":
+        OfficeActConfirm()
+    else:
+        print(lang.invalidSoft)
+
+def about():
+    os.system("cls")
+    print(lang.aboutMsg1)
+    print(lang.aboutAuthor)
+    print(lang.githubPage)
+    print(lang.KMSinfo)
+
+if select == "1":
+    softSelect()
+if select == "2":
+    about()
+
+
+
+
 
 
 
