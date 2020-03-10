@@ -5,9 +5,9 @@
 ✔ - Released  | ❌- Not released  |  🔜 - Coming in next update
  -  Windows activation ✔
  -  Office activation  ✔
- -  Create reactivation task function ❌
+ -  Create reactivation task function 🔜
  -  Multi language ✔
- -  Graphical user interface ❌
+ -  Graphical user interface 🔜
  -  Automatic Administrator Request (UAC) ✔
  
  
